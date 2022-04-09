@@ -13,13 +13,11 @@ public class Archivo extends FileSystem{
 
 	@Override
 	public Archivo archivoMasGrande() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 
 	@Override
 	public Archivo archivoMasNuevo() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 }
