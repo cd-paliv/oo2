@@ -12,6 +12,7 @@ Mensajero --> Conexion : conexion
 
 class ConexionSegura{
  +enviar(mensaje: String)
+ +setEncriptador(e: Encriptador)
 }
 Conexion <|-- ConexionSegura
 

@@ -3,13 +3,13 @@ skinparam Monochrome true
 skinparam classAttributeIconSize 0 
 
 class Decodificador{
- +setCriterio()
+ +setCriterio(r: Recommend)
  +getRecomendaciones(): List<Peliculas>
 }
 
 Decodificador --> Pelicula : disponibles \n0..*
 Decodificador --> Pelicula : reproducidas \n0..*
-Decodificador --> Recommend : recomendadas \n1
+Decodificador --> Recommend : criterio \n1
 
 class Pelicula{
  -String titulo
@@ -18,17 +18,17 @@ class Pelicula{
 }
 
 interface Recommend{
- +getRecomendaciones(): List<Peliculas>
+ +getRecomendaciones(disp : List<Peliculas>, rep: List<Peliculas>): List<Peliculas>
 }
 
 class Novedad{
- +getRecomendaciones(): List<Peliculas>
+ +getRecomendaciones(disp : List<Peliculas>, rep: List<Peliculas>): List<Peliculas>
 }
 class Similar{
- +getRecomendaciones(): List<Peliculas>
+ +getRecomendaciones(disp : List<Peliculas>, rep: List<Peliculas>): List<Peliculas>
 }
 class PorPuntaje{
- +getRecomendaciones(): List<Peliculas>
+ +getRecomendaciones(disp : List<Peliculas>, rep: List<Peliculas>): List<Peliculas>
 }
 
 Recommend <|.. Novedad

@@ -11,7 +11,7 @@ public class TopografiaCompuesta implements Topografia{
 
     @Override
     public double getProporcion(){ //proporcion esta dada por la suma de la proporcion de sus componentes dividida por 4.
-    	return componentes.stream().mapToDouble(elem -> elem.getProporcion()).sum()/ this.componentes.size();
+    	return componentes.stream().mapToDouble(elem -> elem.getProporcion()).sum() / this.componentes.size();
     }
 
     @Override
