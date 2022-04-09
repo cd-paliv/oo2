@@ -1,0 +1,41 @@
+@startuml ej4
+skinparam Monochrome true
+skinparam classAttributeIconSize 0 //para que los modificadores aparezcan como expresiones
+
+class Decodificador{
+ +setCriterio()
+ +getRecomendaciones(): List<Peliculas>
+}
+
+Decodificador --> Pelicula : disponibles \n0..*
+Decodificador --> Pelicula : reproducidas \n0..*
+Decodificador --> Recommend : peliculasRecomendadas \n1
+
+class Pelicula{
+ -String titulo
+ -LocalDate anioEstreno
+ -double puntaje
+}
+
+Pelicula --> Pelicula : similares \n0..*
+
+interface Recommend{
+ +getRecomendaciones(): Recommend
+}
+
+class Novedad{
+ +getRecomendaciones(): Recommend
+}
+
+class Similar{
+ +getRecomendaciones(): Recommend
+}
+
+class PorPuntaje{
+ +getRecomendaciones(): Recommend
+}
+
+Recommend <|.. Novedad
+Recommend <|.. Similar
+Recommend <|.. PorPuntaje
+@enduml

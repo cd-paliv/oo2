@@ -1,0 +1,36 @@
+@startuml ej2
+skinparam Monochrome true
+skinparam classAttributeIconSize 0
+
+class Mensajero{
+ +enviar(mensaje: String)
+}
+class Conexion{
+ +enviar(mensaje:  string)
+}
+Mensajero --> Conexion : conexion
+
+class ConexionSegura{
+ +enviar(mensaje: String)
+}
+Conexion <|-- ConexionSegura
+
+interface Encriptador{
+ +encriptar(mensaje: String): String
+}
+ConexionSegura --> Encriptador : encriptador
+
+class RSA{
+ +encriptar(mensaje: String): String
+}
+class RC4{
+ +encriptar(mensaje: String): String
+}
+class Blowfish{
+ +encriptar(mensaje: String): String
+}
+
+Encriptador <|.. RSA
+Encriptador <|.. RC4
+Encriptador <|.. Blowfish
+@enduml
