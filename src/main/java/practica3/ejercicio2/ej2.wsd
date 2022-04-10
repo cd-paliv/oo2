@@ -8,18 +8,20 @@ class Mensajero{
 class Conexion{
  +enviar(mensaje:  string)
 }
-Mensajero --> Conexion : conexion
+Mensajero -r-> Conexion : conexion
 
 class ConexionSegura{
  +enviar(mensaje: String)
  +setEncriptador(e: Encriptador)
 }
-Conexion <|-- ConexionSegura
+Conexion <|-r- ConexionSegura
 
+note "Strategy" as N1
 interface Encriptador{
  +encriptar(mensaje: String): String
 }
-ConexionSegura --> Encriptador : encriptador
+N1 .right. Encriptador
+ConexionSegura -down-> Encriptador : encriptador
 
 class RSA{
  +encriptar(mensaje: String): String

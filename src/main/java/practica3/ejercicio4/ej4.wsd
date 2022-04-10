@@ -7,9 +7,9 @@ class Decodificador{
  +getRecomendaciones(): List<Peliculas>
 }
 
-Decodificador --> Pelicula : disponibles \n0..*
-Decodificador --> Pelicula : reproducidas \n0..*
-Decodificador --> Recommend : criterio \n1
+Decodificador -up-> Pelicula : disponibles \n0..*
+Decodificador -up-> Pelicula : reproducidas \n0..*
+Decodificador -right-> Recommend : criterio \n1
 
 class Pelicula{
  -String titulo

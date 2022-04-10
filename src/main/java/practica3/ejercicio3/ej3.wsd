@@ -1,0 +1,58 @@
+@startuml ej3
+skinparam Monochrome true
+skinparam classAttributeIconSize 0 
+
+class Dispositivo{
+    +send(data:String): String
+}
+
+interface Calculator{
+    +crcFor(data: String): Integer
+}
+class CRC16_Calculator{
+ +crcFor(data: String): Integer
+}
+class CRC32_Calculator{
+    +crcFor(data:String):Integer
+}
+Calculator <-left- Dispositivo : crcCalculator
+Calculator <|.. CRC16_Calculator
+Calculator <|.. CRC32_Calculator
+
+class Ringer{
+    +ring():void
+}
+Ringer <-down- Dispositivo : ringer
+
+class Display{
+    +showBanner(img:String): String
+}
+Display <-- Dispositivo
+
+interface Connection{
+    +sendData(data:String, crc:Integer): String
+    +pict(): String
+}
+Connection <-right- Dispositivo : connection
+
+class WifiConn{
+    -pict: String
+    +sendData(data:String, crc:Integer): String
+    +pict():String
+}
+Connection <|.. WifiConn
+
+class 4GConnection{
+    -symb: String
+    +transmit(data:String, crc:Integer): String
+}
+note "Adapter" as N2
+class 4GConnectionAdapter{
+    +sendData(data:String, crc:Integer): String
+    +pict():String
+}
+N2 .up. 4GConnectionAdapter
+Connection <|.. 4GConnectionAdapter
+4GConnectionAdapter -d-> 4GConnection : adaptee
+
+@enduml
