@@ -2,21 +2,31 @@ package practica2.ejercicio1;
 
 import java.util.*;
 
-public class TopografiaCompuesta implements Topografia{
+public class TopografiaCompuesta extends Topografia{
     private List<Topografia> componentes;
 
     public TopografiaCompuesta(){
         componentes = new ArrayList<>();
     }
-
+    
+    //proporcion esta dada por la suma de la proporcion de sus componentes dividida por 4.
     @Override
-    public double getProporcion(){ //proporcion esta dada por la suma de la proporcion de sus componentes dividida por 4.
-    	return componentes.stream().mapToDouble(elem -> elem.getProporcion()).sum() / this.componentes.size();
+    public double getProporcionAgua(){ 
+    	return componentes.stream().mapToDouble(elem -> elem.getProporcionAgua()).sum() / this.componentes.size();
+    }
+    
+    @Override
+	public double getProporcionTierra() {
+		return componentes.stream().mapToDouble(elem -> elem.getProporcionTierra()).sum() / this.componentes.size();
+	}
+
+    public double getProporcion() {
+        return this.getProporcionAgua() + this.getProporcionTierra();
     }
 
     @Override
     public boolean esIgual(Topografia t){
-        return this.getProporcion() == t.getProporcion();
+        return (this.getProporcionAgua() == t.getProporcionAgua()) && (this.getProporcionTierra() == t.getProporcionTierra());
     }
 
     public void addComponentes(Topografia t){
@@ -26,7 +36,7 @@ public class TopografiaCompuesta implements Topografia{
     }
 
     public double totalProporciones(){
-        return this.componentes.stream().mapToDouble(elem -> elem.getProporcion()).sum();
+        return this.componentes.stream().mapToDouble(elem -> elem.getProporcionAgua()).sum();
     }
 
 }

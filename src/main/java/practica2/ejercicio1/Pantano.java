@@ -1,11 +1,10 @@
 package practica2.ejercicio1;
 
-public class Tierra extends Topografia{
+public class Pantano extends Topografia {
 
 	@Override
 	public double getProporcionAgua() {
-		return 0;
+		return 0.7;
 	}
 
-	
 }

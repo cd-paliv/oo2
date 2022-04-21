@@ -1,8 +1,14 @@
 package practica2.ejercicio1;
 
-public interface Topografia {
+public abstract class Topografia {
 
-    public double getProporcion();
+    public abstract double getProporcionAgua();
+    
+    public double getProporcionTierra() {
+    	return 1 - this.getProporcionAgua();
+    }
 
-    public boolean esIgual(Topografia t);
+    public boolean esIgual(Topografia t) {
+    	return this.getProporcionAgua() == t.getProporcionAgua();
+    }
 }

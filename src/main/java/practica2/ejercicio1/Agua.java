@@ -1,14 +1,10 @@
 package practica2.ejercicio1;
 
-public class Agua implements Topografia {
+public class Agua extends Topografia {
 
-    @Override
-    public double getProporcion() {
-        return 1;
-    }
+	@Override
+	public double getProporcionAgua() {
+		return 1;
+	}
 
-    @Override
-    public boolean esIgual(Topografia t) {
-        return this.getProporcion() == t.getProporcion();
-    }
 }

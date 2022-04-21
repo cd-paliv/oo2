@@ -1,0 +1,38 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+
+
+class Usuario{
+    -MyMusic
+    +addMusic()
+    +removeMusic()
+}
+
+class SpOOtify{
+    +buscarPorTitulo(String titulo): List<Tema>
+    +buscarPorAutor(String nombre): List<Tema>
+    +buscarPorAlbum(String nombre): List<Tema>
+}
+Autor <-u- SpOOtify : 0..*
+Usuario <-u- SpOOtify : 0..*
+
+class Autor{
+    -albumes: List<Album>
+}
+
+class Album{
+
+}
+Album <-l- Autor : 0..*
+
+class Tema{
+
+}
+Tema <-- Album : 0..*
+
+@enduml
