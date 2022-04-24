@@ -1,0 +1,40 @@
+---------------------------------------------------------------------------------
+3.1 Empleados
+    (i). Código duplicado.
+    (ii). Jerarquía de clases. Así, cada objeto hijo hereda el comportamiento y
+        las variables. El método sueldo() sería un template method ya que hace lo
+        mismo de distinta forma.
+
+---------------------------------------------------------------------------------
+3.2 Juego
+    (i). Envidia de atributos.
+    (ii). El jugador debería incrementar o disminuir su propia puntuación, el Juego
+        debería sólo indicarle que lo haga. Además las variables son públicas cuando
+        deberían ser privadas.
+
+---------------------------------------------------------------------------------
+3.3 Publicaciones
+    (i). Método largo.
+    (ii). Debería hacer cada uno en un método distinto, así haciendo más corto y
+        representativo el código.
+
+---------------------------------------------------------------------------------
+3.4 Carrito de compras
+    (i). Romper encapsulamiento.
+    (ii). ItemCarrito debería devolver el precio del producto que representa él
+        mismo, no permitir el acceso al objeto entero.
+
+---------------------------------------------------------------------------------
+3.5 Envío de pedidos
+    (i). Envidia de atributos.
+    (ii). getDireccionFormateada() debería realizarlo el objeto Dirección.
+
+---------------------------------------------------------------------------------
+3.6 Películas
+    (i). Switch statements.
+    (ii). En lugar de comparar los tipos de subscripción con el string literal,
+        podría hacer un Strategy Pattern donde cada tipo de subscripción
+        implemente una interfaz que permita enviar un mensaje y cada tipo se haga
+        cargo del cálculo.
+    
+---------------------------------------------------------------------------------
