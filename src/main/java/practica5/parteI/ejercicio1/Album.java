@@ -1,4 +1,4 @@
-package practica5.ejercicio1;
+package practica5.parteI.ejercicio1;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,9 +23,13 @@ public class Album {
 		//return temas.stream().collect(Collectors.toList());
 	}
 	
+	public boolean containsTxt(String texto) {
+		return this.getNombre().toLowerCase().contains(texto.toLowerCase());
+	}
+	
 	public List<Tema> getTemasConTexto(String texto){
 		return this.temas.stream()
-				.filter(a -> a.getNombre().toLowerCase().contains(texto.toLowerCase()))
+				.filter(a -> a.containsTxt(texto))
 				.collect(Collectors.toList());
 	}
 	

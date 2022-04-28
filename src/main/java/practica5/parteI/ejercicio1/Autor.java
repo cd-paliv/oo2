@@ -1,4 +1,4 @@
-package practica5.ejercicio1;
+package practica5.parteI.ejercicio1;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,6 +21,10 @@ public class Autor {
 	public void addAlbum(Album a) {
 		this.albumes.add(a);
 	}
+	
+	public boolean containsTxt(String texto) {
+		return this.getNombre().toLowerCase().contains(texto.toLowerCase());
+	}
 
 	public List<Tema> getTemasDeAutor(){
 		return this.albumes.stream()
@@ -31,7 +35,7 @@ public class Autor {
 	
 	public List<Tema> getAlbumesConTexto(String texto) {
 		return this.albumes.stream()
-				.filter(a -> a.getNombre().toLowerCase().contains(texto.toLowerCase()))
+				.filter(a -> a.containsTxt(texto))
 				.map(a -> a.getTemas())
 				.flatMap(temas -> temas.stream())
 				.collect(Collectors.toList());

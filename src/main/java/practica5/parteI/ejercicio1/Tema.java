@@ -1,4 +1,4 @@
-package practica5.ejercicio1;
+package practica5.parteI.ejercicio1;
 
 
 public class Tema {
@@ -13,6 +13,8 @@ public class Tema {
 		return nombre;
 	}
 	
-	
+	public boolean containsTxt(String texto) {
+		return this.getNombre().toLowerCase().contains(texto.toLowerCase());
+	}
 	
 }

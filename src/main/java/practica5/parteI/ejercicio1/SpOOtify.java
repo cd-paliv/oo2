@@ -1,4 +1,4 @@
-package practica5.ejercicio1;
+package practica5.parteI.ejercicio1;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,11 +23,21 @@ public class SpOOtify {
 	
 	public List<Tema> buscarPorAutor(String texto){
 		return this.autores.stream()
-				.filter(a -> a.getNombre().toLowerCase().contains(texto.toLowerCase())) //filtro por nombre
+				.filter(a -> a.containsTxt(texto)) //filtro por nombre
 				.map(a -> a.getTemasDeAutor()) //le pido todos los temas a cada autor
 				.flatMap(temas -> temas.stream()) //obtengo los temas
 				.collect(Collectors.toList());
 	}
+	
+	/*
+	 * public List<Tema> buscarPorAutor(String texto){
+		return this.autores.stream()
+				.filter(a -> a.compararNombre(texto)) //filtro por nombre
+				.map(a -> a.getTemasDeAutor()) //le pido todos los temas a cada autor
+				.flatMap(temas -> temas.stream()) //obtengo los temas
+				.collect(Collectors.toList());
+	}
+	 */
 	
 	public List<Tema> buscarPorAlbum(String texto){
 		return this.autores.stream()

@@ -1,8 +1,10 @@
-package practica5.ejercicio1;
+package practica5.parteI;
 
 import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.*;
+
+import practica5.parteI.ejercicio1.*;
 
 public class SpOOtifyTest {
 
@@ -49,7 +51,7 @@ public class SpOOtifyTest {
 	
 	@Test
 	public void autorTest() {
-		//obtiene los 6 temas: 3 de Nanu y 3 de Pau
+		//obtiene los 6 temas de los artistas con "a": 3 de Nanu y 3 de Pau
 		assertEquals(this.s.buscarPorAutor("a").get(0).getNombre(), "Durmiendo con la vecina");
 		assertEquals(this.s.buscarPorAutor("a").get(3).getNombre(), "owo");
 	}

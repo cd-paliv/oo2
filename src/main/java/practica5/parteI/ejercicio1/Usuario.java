@@ -1,4 +1,4 @@
-package practica5.ejercicio1;
+package practica5.parteI.ejercicio1;
 
 import java.util.*;
 
