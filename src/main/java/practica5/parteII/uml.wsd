@@ -1,0 +1,72 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+
+class GuiaTelefonica {
+    -guia: SortedSet<String>
+    +existeNumero(n: String): boolean
+    +agregarNumero(n: String): boolean
+    +getUltimoTelefonoYEliminarlo(): String
+}
+
+abstract class Llamada {
+    ~tipoDeLlamada: String
+    -emisor: String
+    -remitente: String
+    -duracionDeLlamada: int
+    +calcularMontoLlamada(): double
+}
+
+class LlamadaNacional{
+    +calcularMontoLlamada(): double
+}
+Llamada <|.. LlamadaNacional
+class LlamadaInternacional {
+    +calcularMontoLlamada(): double
+}
+Llamada <|.. LlamadaInternacional
+
+abstract class Persoona {
+	-tipoDeCliente: String
+	-nombre: String
+	-telefono: String
+    +getDescuento(): double
+    +agregarLlamada(l: Llamada)
+    +calcularMontoTotalLlamadas(): double
+}
+Llamada <-l- Persoona : 0..*
+Persoonal <-- Persoona : 1
+
+class PersoonaFisica{
+    -dni: String
+    +getDescuento(): double
+}
+Persoona <|.. PersoonaFisica
+
+class PersoonaJuridica{
+    -cuit: String
+    +getDescuento(): double
+}
+Persoona <|.. PersoonaJuridica
+
+class Persoonal {
+    +agregarTelefono(str: String): boolean
+    +getNuevoTelefono(): String
+    +registrarUsuario(String data, String nombre, String tipoDeUsuario) : Persoona
+    -registrarUsuarioSegunTipo(String data, String nombre, String tipoDeUsuario) : Persoona
+    +eliminarUsuario(p: Persoona): boolean
+    +registrarLlamada(Persoona p1, Persoona p2, String tipoDeLlamada, int duracion) : Llamada
+    -registrarLlamadaSegunTipo(Persoona p1, Persoona p2, String tipoDeLlamada, int duracion) : Llamada
+    +calcularMontoTotalLlamadas(p: Persoona): double
+    +cantidadDeUsuarios(): int
+    +existeUsuario(persona: Persoona): boolean
+}
+Persoona <-- Persoonal : 0..*
+Llamada <-l- Persoonal : 0..*
+GuiaTelefonica <-- Persoonal : 1
+
+@enduml

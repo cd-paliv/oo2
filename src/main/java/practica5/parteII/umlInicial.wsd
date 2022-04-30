@@ -1,0 +1,63 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+
+class GuiaTelefonica {
+    +guia: SortedSet<String>
+}
+
+class Llamada {
+    ~tipoDeLlamada: String
+    -emisor: String
+    -remitente: String
+    +dur: int
+    +<<create>> Llamada()
+    +getTipoDeLlamada(): String
+    +setTipoDeLlamada(tipoDeLlamada: String)
+    +setEmisor(q: String)
+    +getRemitente(): String
+    +setRemitente(remitente: String)
+}
+
+class Persoona {
+	+t: String
+	+nya: String
+	+tel: String
+	+cuit: String
+	+doc: String
+    +getLista1(): List<Llamada>
+    +setLista1(lista1: List<Llamada>)
+    +getT(): String
+    +setT(t: String)
+    +getNya(): String
+    +setNya(nya: String)
+    +getTel(): String
+    +setTel(tel: String)
+    +getCuit(): String
+    +setCuit(cuit String)
+    +getDoc(): String
+    +setDoc(doc String)
+}
+Llamada <-- Persoona : 0..*
+Persoonal "1" <-- Persoona
+
+class Persoonal {
+    -descuentoJur: static double
+    -descuentoFis: static double
+    +agregarTelefono(str: String): boolean
+    +registrarUsuario(data: String, nombre: String, t: String) : Persoona
+    +eliminarUsuario(p: Persoona): boolean
+    +registrarLlamada(q: Persoona, q2: Persoona, t: String, d: int) : Llamada
+    +calcularMontoTotalLlamadas(p: Persoona): double
+    +cantidadDeUsuarios(): int
+    +existeUsuario(persona: Persoona): boolean
+}
+Persoona <-- Persoonal : 0..*
+Llamada <-- Persoonal : 0..*
+GuiaTelefonica "1" <-- Persoonal
+
+@enduml
