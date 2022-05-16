@@ -17,7 +17,7 @@ public class Persoonal {
 		return guiaTelefonica.getUltimoTelefonoYEliminarlo();
 	}
 	
-	public Persoona registrarUsuario(String data, String nombre, String tipoDeUsuario) {
+	public Persoona registrarUsuario(String data, String nombre, String tipoDeUsuario) { //se podria refactorizar el test
 		Persoona p = registrarUsuarioSegunTipo(data, nombre, tipoDeUsuario);
 		p.setTelefono(getNuevoTelefono());
 		p.setSistema(this);

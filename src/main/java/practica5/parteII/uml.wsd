@@ -24,11 +24,11 @@ abstract class Llamada {
 class LlamadaNacional{
     +calcularMontoLlamada(): double
 }
-Llamada <|.. LlamadaNacional
+Llamada <|-- LlamadaNacional
 class LlamadaInternacional {
     +calcularMontoLlamada(): double
 }
-Llamada <|.. LlamadaInternacional
+Llamada <|-- LlamadaInternacional
 
 abstract class Persoona {
 	-tipoDeCliente: String
@@ -45,13 +45,13 @@ class PersoonaFisica{
     -dni: String
     +getDescuento(): double
 }
-Persoona <|.. PersoonaFisica
+Persoona <|-- PersoonaFisica
 
 class PersoonaJuridica{
     -cuit: String
     +getDescuento(): double
 }
-Persoona <|.. PersoonaJuridica
+Persoona <|-- PersoonaJuridica
 
 class Persoonal {
     +agregarTelefono(str: String): boolean
