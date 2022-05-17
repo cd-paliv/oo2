@@ -34,11 +34,7 @@ public class ListFormatter extends Formatter {
 										.findAny()
 										.orElse(null);
 		
-		if(palabra != null) {
-			return msg.replaceAll("(?i)"+palabra, "***")  + "\n";
-		}
-		
-		return msg + "\n";
+		return palabra != null ? (msg.replaceAll("(?i)"+palabra, "***")  + "\n") : (msg + "\n");
 	}
 
 }

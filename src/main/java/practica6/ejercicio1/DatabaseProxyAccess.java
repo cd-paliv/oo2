@@ -34,7 +34,7 @@ public class DatabaseProxyAccess implements DatabaseAccess {
 		handlerJSON.setFormatter(new JSONFormatter());
 		this.logger.addHandler(handlerJSON);
 		List<String> lista= new ArrayList<String>();
-		lista.add("sE");
+		//lista.add("sE");
 		lista.add("deNEGAdo");
 		handlerHide.setFormatter(new ListFormatter(lista));
 		this.logger.addHandler(handlerHide);
