@@ -1,4 +1,4 @@
-package practica6.ejercicio1;
+package practica6.ejercicio1AB;
 
 import java.util.logging.*;
 

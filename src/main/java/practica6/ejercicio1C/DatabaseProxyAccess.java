@@ -1,26 +1,24 @@
-package practica6.ejercicio1;
+package practica6.ejercicio1C;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.*;
 
 public class DatabaseProxyAccess implements DatabaseAccess {
 
-	//A. Agrego logger y pongo mensajes en getSearchResults() y insertNewRow() con niveles.
-	//B. Agrego clases de formato JSONFormatter y ShoutingSimpleFormatter y los pongo como handlers en el logger.
-	//C.I. Agrego clase ListFormatter y lo pongo como hanlder en el logger.
+	//C.I. Agrego clase ListFormatter y lo pongo como handler en el logger.
 	//C.II. 
 	
 	private DatabaseAccess database;
 	private boolean autenticado;
 	private String password;
 	private Logger logger = Logger.getLogger("Proxy");
-	private ConsoleHandler handlerUpperCase = new ConsoleHandler();
-	private ConsoleHandler handlerJSON = new ConsoleHandler();
 	private ConsoleHandler handlerHide = new ConsoleHandler();
+	//private ConsoleHandler MailHandler = new ConsoleHandler();
 	
-	public DatabaseProxyAccess(DatabaseAccess database, String password) {
+	public DatabaseProxyAccess(DatabaseAccess database, String password) throws IOException {
 		super();
 		this.database = database;
 		this.autenticado = false;
@@ -28,16 +26,13 @@ public class DatabaseProxyAccess implements DatabaseAccess {
 		configureLogs();
 	}
 	
-	public void configureLogs() {
-		handlerUpperCase.setFormatter(new ShoutingSimpleFormatter());
-		this.logger.addHandler(handlerUpperCase);
-		handlerJSON.setFormatter(new JSONFormatter());
-		this.logger.addHandler(handlerJSON);
-		List<String> lista= new ArrayList<String>();
-		//lista.add("sE");
-		lista.add("deNEGAdo");
-		handlerHide.setFormatter(new ListFormatter(lista));
+	public void configureLogs() throws IOException{
+		//C.I.
+		handlerHide.setFormatter(new ListFormatter(Arrays.asList("deNEGAdo", "se")));
 		this.logger.addHandler(handlerHide);
+		//C.II.
+		this.logger.addHandler(new MailHandler());
+		//---------------------------------------
 		logger.setUseParentHandlers(false); //ignora los handlers del super() asi solo usa los handlers que yo seteo
 	}
 

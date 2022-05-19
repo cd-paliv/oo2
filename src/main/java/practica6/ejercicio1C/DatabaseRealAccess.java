@@ -1,4 +1,4 @@
-package practica6.ejercicio1;
+package practica6.ejercicio1C;
 
 import java.util.Arrays;
 import java.util.Collection;

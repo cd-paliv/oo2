@@ -1,0 +1,68 @@
+package practica6.ejercicio1AB;
+
+import java.util.Collection;
+import java.util.List;
+import java.util.logging.*;
+
+public class DatabaseProxyAccess implements DatabaseAccess {
+
+	//A. Agrego logger y pongo mensajes en getSearchResults() y insertNewRow() con niveles.
+	//B. Agrego clases de formato JSONFormatter y ShoutingSimpleFormatter y los pongo como handlers en el logger.
+
+	private DatabaseAccess database;
+	private boolean autenticado;
+	private String password;
+	private Logger logger = Logger.getLogger("Proxy");
+	private ConsoleHandler handlerUpperCase = new ConsoleHandler();
+	private ConsoleHandler handlerJSON = new ConsoleHandler();
+	
+	public DatabaseProxyAccess(DatabaseAccess database, String password){
+		super();
+		this.database = database;
+		this.autenticado = false;
+		this.password = password;
+		configureLogs();
+	}
+	
+	public void configureLogs(){
+		handlerUpperCase.setFormatter(new ShoutingSimpleFormatter());
+		this.logger.addHandler(handlerUpperCase);
+		handlerJSON.setFormatter(new JSONFormatter());
+		this.logger.addHandler(handlerJSON);
+		logger.setUseParentHandlers(false); //ignora los handlers del super() asi solo usa los handlers que yo seteo
+	}
+
+	public boolean isAutenticado() {
+		return this.autenticado;
+	}
+	
+	public boolean autenticar(String password) {
+		if(this.password.equals(password)) {
+			this.autenticado = true;
+		}
+		return this.autenticado;
+	}
+	
+	@Override
+	public Collection<String> getSearchResults(String queryString) {
+		if(! this.isAutenticado()) {
+			logger.severe("Acceso denegado");
+			throw new RuntimeException("Acceso denegado");
+		}
+		logger.info("Se busca");
+		return database.getSearchResults(queryString);
+	}
+
+	@Override
+	public int insertNewRow(List<String> rowData) {
+		if(! this.isAutenticado()) {
+			logger.severe("Acceso denegado");
+			throw new RuntimeException("Acceso denegado");
+		}
+		logger.warning("Se inserta");
+		return database.insertNewRow(rowData);
+	}
+	
+	
+	
+}

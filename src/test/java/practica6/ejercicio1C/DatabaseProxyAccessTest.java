@@ -1,19 +1,24 @@
-package practica6.ejercicio1;
+package practica6.ejercicio1C;
 
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.*;
-import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DatabaseProxyAccesTest {
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+public class DatabaseProxyAccessTest {
 	public DatabaseProxyAccess database;
 
-    void initialize(){
+    void initialize() throws IOException{
         database = new DatabaseProxyAccess(new DatabaseRealAccess(), "hola123");
     }
 
     @BeforeEach
-    void setUp(){
+    void setUp() throws IOException{
         this.initialize();
     }
 

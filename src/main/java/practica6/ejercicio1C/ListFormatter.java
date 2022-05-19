@@ -1,4 +1,4 @@
-package practica6.ejercicio1;
+package practica6.ejercicio1C;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class ListFormatter extends Formatter {
 		
 		String palabra = palabrasOcultar.stream()
 										.filter(m -> msg.toLowerCase().contains(m.toLowerCase()))
-										.findAny()
+										.findFirst()
 										.orElse(null);
 		
 		return palabra != null ? (msg.replaceAll("(?i)"+palabra, "***")  + "\n") : (msg + "\n");
