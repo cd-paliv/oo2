@@ -1,0 +1,45 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+skinparam NoteBackgroundColor transparent
+skinparam NoteBorderColor Black
+
+
+class MediaPlayer{
+    
+}
+
+class Media{
+    +play()
+}
+
+Media <-l- MediaPlayer : media*
+
+class Audio{
+    +play()
+}
+
+class VideoFile{
+    +play()
+}
+
+Media <|-- Audio
+Media <|-- VideoFile
+
+class VideoStream{
+    +reproduce()
+}
+
+class VideoStreamAdapter{
+    +play()
+}
+VideoStream <-- VideoStreamAdapter : adaptee
+Media <|-- VideoStreamAdapter
+note "+reproduce()" as N
+N .l. VideoStreamAdapter
+
+@enduml

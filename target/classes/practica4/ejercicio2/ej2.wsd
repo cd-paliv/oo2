@@ -19,7 +19,7 @@ File <|-- FileOO2
 class FileDecorator{
     +prettyPrint(): String
 }
-File <-- FileDecorator : component
+File <--o FileDecorator : component
 File <|-- FileDecorator
 
 class DecoratorNombre{

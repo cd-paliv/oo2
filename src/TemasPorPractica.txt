@@ -1,0 +1,21 @@
+Práctica 1
+└ejercicio3: Adapter
+
+Práctica 2
+└ejercicio3: Composite
+
+Práctica 3
+└ejercicio1: State
+└ejercicio2: Strategy
+└ejercicio3: Adapter, Strategy (Interfaces)
+└ejercicio4: Strategy
+
+Práctica 4
+└ejercicio1: Proxy
+└ejercicio2: Decorator
+
+Práctica 5
+└parte2: Refactoring
+
+Práctica 6
+└
