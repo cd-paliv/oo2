@@ -18,8 +18,8 @@ public class MailExample {
 			String to = "destination@mail.com";
 
 			// credenciales
-			String username = "5ff44a8c4286d5"; // Completar con su username de mailtrap
-			String password = "02d556163ae72a"; // Completar con su password de mailtrap
+			String username = ""; // Completar con su username de mailtrap
+			String password = ""; // Completar con su password de mailtrap
 			
 			Properties props = new Properties();
 			props.put("mail.smtp.auth", "true");
