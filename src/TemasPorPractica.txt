@@ -18,4 +18,8 @@ Práctica 5
 └parte2: Refactoring
 
 Práctica 6
-└
+└ejercicio1: Frameworks
+└ejercicio2: Plantillas y ganchos
+
+Práctica 7
+└ejercicio1:
