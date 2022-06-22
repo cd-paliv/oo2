@@ -35,6 +35,6 @@
         Menos clases con muchas combinaciones posibles.
         Se pueden cambiar las partes de un robot en ejecución.
         Mejor delegación de tareas.
-    ### Contras:
+    Contras:
         No se conocen los atributos por lo que es necesario usar parámetros.
         Se envían muchos mensajes entre objetos.
