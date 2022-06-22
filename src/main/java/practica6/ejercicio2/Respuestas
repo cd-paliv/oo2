@@ -13,6 +13,7 @@ Plantillas y composición:
     Utilizando composición esto es más simple ya que sólo se agrega la nueva subclase FourByFourWheels a LocomotionSystem, y se instancia un Robot con un sistema de locomoción 4x4. Esto se lograría con el siguiente código:
         Robot r = new Robot(new FourByFourWheels(), new LaserSystem(), new SolarWithBattery);
     Donde FourByFourWheels es el tipo de locomoción, LaserSystem el tipo de armamento y SolarWithBattery el tipo de fuente de energía.
+<img height="40" align="center" alt="java" height="30" width="40" src="https://catedras.linti.unlp.edu.ar/pluginfile.php/104819/mod_imscp/content/1/composicion.png">
 
 --¿Puedo cambiarle, a un robot existente, el sistema de armas sin tener que instanciar el robot de nuevo?
     Si.
