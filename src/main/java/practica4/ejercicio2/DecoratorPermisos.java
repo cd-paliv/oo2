@@ -3,7 +3,7 @@ package practica4.ejercicio2;
 
 public class DecoratorPermisos extends FileDecorator  {
 
-	public DecoratorPermisos(File component) {
+	public DecoratorPermisos(FileOO2 component) {
 		super(component);
 		// TODO Auto-generated constructor stub
 	}

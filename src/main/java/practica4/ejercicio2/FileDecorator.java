@@ -2,18 +2,21 @@ package practica4.ejercicio2;
 
 import java.time.LocalDate;
 
-public abstract class FileDecorator implements File{
+public abstract class FileDecorator implements FileOO2{
 
-	protected File component;
+	protected FileOO2 component;
 	
-	public FileDecorator(File component) {
+	public FileDecorator(FileOO2 component) {
 		super();
 		this.component = component;
 	}
 
 	public String prettyPrint(String print) {
 		// TODO Auto-generated method stub
-		return print + " - " + this.component.prettyPrint();
+		String pretty = this.component.prettyPrint();
+		if(! pretty.isEmpty())
+			return print + " - " + pretty;
+		return print;
 	}
 
 	@Override

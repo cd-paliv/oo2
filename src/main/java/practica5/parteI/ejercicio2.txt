@@ -1,15 +1,10 @@
 ---------------------------------------------------------------------------------
 2.1 Protocolo de Cliente
-    La clase Cliente tiene el siguiente protocolo. ¿Cómo puede mejorarlo?.
 
 Cambiando los nombres para que sean más representativos de lo que hacen.
 
 ---------------------------------------------------------------------------------
 2.2 Participación en proyectos 
-    Al revisar el siguiente diseño inicial (Figura 1), se decidió realizar un
-    cambio para evitar lo que se consideraba un mal olor. El diseño modificado
-    se muestra en la Figura 2. Indique qué tipo de cambio se realizó y si lo
-    considera apropiado. Justifique su respuesta.
 
 Se presenta envidia de atributos y se rompe el encapsulamiento al pedir todos los
 participantes del proyecto para saber si el actual se encuentra ahí.
@@ -18,11 +13,10 @@ encapsulación.
 
 ---------------------------------------------------------------------------------
 2.3 Cálculos 
-    Analice el código que se muestra a continuación. Indique qué defectos
-    encuentra y cómo pueden corregirse.
 
 El for podría realizarse con un stream para el totalSalario y el promedio de
-edades. Así, con tres métodos es más legible y corregible el código.
+edades. Así, dividiendo cada total en tres métodos es más legible y reutilizable
+el código.
 
     public int totalSalarios(){
         return personal.stream().mapToInt(p -> p.getSalario()).sum();
@@ -31,6 +25,12 @@ edades. Así, con tres métodos es más legible y corregible el código.
     public double promedioEdades(){
         return personal.stream().mapToDouble(e -> e.getEdad())
                                 .average().orElse(Double.NaN);
+    }
+    
+    public void imprimirValores(){
+    	String message = String.format("El promedio de las edades es %s y
+    		el total de salarios es %s", this.promedioEdades(), this.totalSalarios());
+    	System.out.println(message);
     }
 
 ---------------------------------------------------------------------------------

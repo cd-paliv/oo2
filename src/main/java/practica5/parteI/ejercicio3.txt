@@ -1,28 +1,85 @@
 ---------------------------------------------------------------------------------
 3.1 Empleados
-    (i). Código duplicado.
-    (ii). Jerarquía de clases. Así, cada objeto hijo hereda el comportamiento y
-        las variables. El método sueldo() sería un template method ya que hace lo
-        mismo de distinta forma.
+
+(i) Código repetido.
+(ii) Form Template Method: defino el esqueleto (variables nombre, apellido y sueldoBasico y el método sueldo()) y hago que los distintos empleados implementen la clase abstracta.
+(iii)	public interface Empleado{ public double sueldo(); }
+		public class EmpleadoTemporario extends Empleado {}
+		public class EmpleadoPlanta extends Empleado {}
+		public class EmpleadoPasante extends Empleado {}
 
 ---------------------------------------------------------------------------------
 3.2 Juego
-    (i). Envidia de atributos.
-    (ii). El jugador debería incrementar o disminuir su propia puntuación, el Juego
-        debería sólo indicarle que lo haga. Además las variables son públicas cuando
-        deberían ser privadas.
+
+(i) Envidia de atributos.
+(ii) Move Method: aplico los métodos incrementar() y decrementar() dentro de la clase Jugador, de forma que cuando en el Juego se desee aplicar una de estas funcionalidades, el mismo Jugador se haga cargo de cambiar sus datos.
+(iii)public class Juego{
+		public void incrementar(Jugador j){
+			j.incrementarPuntuacion();
+		}
+		public void decrementar(Jugador j){
+			j.decrementarPuntuacion();
+		}
+	}
+
+	public class Jugador{
+		public String nombre;
+		public String apellido;
+		public int puntuacion=0;
+		
+		public void incrementarPuntuacion(){
+			this.puntuacion += 100;
+		}
+		public void decrementarPuntuacion(){
+			this.puntuacion -= 100;
+		}
+	}
+(i) Variables públicas (permitiendo futura envidia de atributos)
+(ii) Se pasan a private todas.
 
 ---------------------------------------------------------------------------------
 3.3 Publicaciones
-    (i). Método largo.
-    (ii). Debería hacer cada uno en un método distinto, así haciendo más corto y
-        representativo el código.
+
+(i) Envidia de atributos.
+(ii) Move Method: hago que cada usuario busque sus posts por su cuenta y PostApp reciba dichos posts directamente.
+(i) Método largo.
+(ii) Extract Method: agarro porciones de código que tienen cierta funcionalidad y lo paso a un nuevo método que será invocado cada vez que dicha funcionalidad sea requerida.
 
 ---------------------------------------------------------------------------------
 3.4 Carrito de compras
-    (i). Romper encapsulamiento.
-    (ii). ItemCarrito debería devolver el precio del producto que representa él
-        mismo, no permitir el acceso al objeto entero.
+
+(i) Data Class.
+(ii) Move Method. Aplico la cuenta realizada en el método total() de Carrito en el ItemCarrito, de forma que devuelva la cantidad total a pagar por cierto producto.
+(iii)public class ItemCarrito{
+		...
+		public double precioTotal(){
+			return this.producto.getPrecio() * this.cantidad;
+		}
+	}
+
+(i) Data Class.
+(ii) Producto sigue siendo un data class, por lo que sus atributos pueden ser llevados directamente a ItemCarrito y eliminar la clase Producto.
+(iii)public class ItemCarrito{
+		private String nombre;
+		private double precio;
+		private int cantidad;
+
+		public double precioTotal(){
+			return this.precio * this.cantidad;
+		}
+	
+		public String getNombre(){}
+		public double getPrecio(){}
+		public int getCantidad(){}
+     }
+    
+     public class Carrito{
+		private List<ItemCarrito> items;
+
+		public double total(){
+			return this.stream().mapToDouble(item -> item.precioTotal()).sum();
+		}
+     }
 
 ---------------------------------------------------------------------------------
 3.5 Envío de pedidos

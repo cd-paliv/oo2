@@ -6,50 +6,54 @@ skinparam ClassBorderColor Black
 skinparam ArrowColor Black
 skinparam shadowing false
 
-interface File{
+interface FileOO2{
+    -nombre: String
+    -extension: String
+    -permisos: String
+    -tamanio: double
+    -fechaCreacion: LocalDate
     +prettyPrint(): String
-    //getters y setters()
+    +getters y setters()
 }
 
-class FileOO2{
+class File implements FileOO2{
     +prettyPrint(): String
 }
-File <|-- FileOO2
 
-class FileDecorator{
+
+abstract FileDecorator implements FileOO2{
+    +<<create>> FileDecorator(FileOO2 c)
     +prettyPrint(): String
 }
-File <--o FileDecorator : component
-File <|-- FileDecorator
+FileOO2 <--o FileDecorator : #component
+note "component.prettyPrint()" as N1
+FileDecorator .u. N1
 
-class DecoratorNombre{
+class DecoratorNombre extends FileDecorator{
+    +prettyPrint(): String
+}
+note "super.prettyPrint(this.component.getAspectoAAplicar)" as N2
+N2 .u. DecoratorNombre
 
+class DecoratorExtension extends FileDecorator{
+    +prettyPrint(): String
 }
 
-class DecoratorExtension{
-
+class DecoratorTamanio extends FileDecorator{
+    +prettyPrint(): String
 }
 
-class DecoratorTamanio{
-
+class DecoratorFechaCreacion extends FileDecorator{
+    +prettyPrint(): String
 }
 
-class DecoratorFechaCreacion{
-
-}
-
-class DecoratorFechaModificacion{
-
+class DecoratorFechaModificacion extends FileDecorator{
+    +prettyPrint(): String
 }
 
 class DecoratorPermisos{
-
+    +prettyPrint(): String
 }
+FileDecorator <|-l- DecoratorPermisos
 
-FileDecorator <|-d- DecoratorNombre
-FileDecorator <|-d- DecoratorExtension
-FileDecorator <|-d- DecoratorTamanio
-FileDecorator <|-d- DecoratorFechaCreacion
-FileDecorator <|-d- DecoratorFechaModificacion
-FileDecorator <|-d- DecoratorPermisos
 @enduml

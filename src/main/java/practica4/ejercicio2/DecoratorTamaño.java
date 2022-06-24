@@ -3,7 +3,7 @@ package practica4.ejercicio2;
 
 public class DecoratorTamaño extends FileDecorator  {
 
-	public DecoratorTamaño(File component) {
+	public DecoratorTamaño(FileOO2 component) {
 		super(component);
 		// TODO Auto-generated constructor stub
 	}

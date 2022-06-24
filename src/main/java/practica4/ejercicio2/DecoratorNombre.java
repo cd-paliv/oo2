@@ -3,7 +3,7 @@ package practica4.ejercicio2;
 
 public class DecoratorNombre extends FileDecorator {
 
-	public DecoratorNombre(File component) {
+	public DecoratorNombre(FileOO2 component) {
 		super(component);
 	}
 
