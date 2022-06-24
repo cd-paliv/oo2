@@ -1,0 +1,51 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam NoteBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam NoteBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+
+class Proyecto{
+    -titulo: String
+    -montoAAlcanzar: real
+    -montoTotalRecibido: real
+    +getMontoTotalRecibido()
+    +getMontoAAlcanzar()
+    +cancelarProyecto()
+}
+
+class Emprendedor{
+    +crearProyecto(e: Estado, monto: real, titulo: String)
+}
+
+Emprendedor <-l- Proyecto : responsable
+
+abstract EstadoDeProyecto{
+    +invertirEnProyecto(p: Proyecto, monto: real)
+    +cancelarProyecto(p: Proyecto)
+}
+EstadoDeProyecto <-u- Proyecto : estado
+note "STATE" as N1
+N1 .l. EstadoDeProyecto
+class Vigente{
+    +invertirEnProyecto(p: Proyecto, monto: real)
+    +cancelarProyecto(p: Proyecto)
+}
+
+class Cancelado{
+    +invertirEnProyecto(p: Proyecto, monto: real)
+    +cancelarProyecto(p: Proyecto)
+}
+
+class Conformado{
+    +invertirEnProyecto(p: Proyecto, monto: real)
+    +cancelarProyecto(p: Proyecto)
+}
+
+EstadoDeProyecto <|-- Vigente
+EstadoDeProyecto <|-- Conformado
+EstadoDeProyecto <|-- Cancelado
+@enduml

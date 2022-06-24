@@ -22,4 +22,6 @@ Práctica 6
 └ejercicio2: Plantillas y ganchos
 
 Práctica 7
-└ejercicio1:
+└ejercicio1: Strategy
+└ejercicio2: Strategy y Adapter
+└ejercicio3: State

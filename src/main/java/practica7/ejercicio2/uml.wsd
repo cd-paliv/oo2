@@ -1,0 +1,57 @@
+@startuml ej1
+skinparam ClassBackgroundColor transparent
+skinparam NoteBackgroundColor transparent
+skinparam classAttributeIconSize 0 
+skinparam ClassBorderThickness 1.3
+skinparam ClassBorderColor Black
+skinparam NoteBorderColor Black
+skinparam ArrowColor Black
+skinparam shadowing false
+
+class Pedido{
+    +monto(): Real
+    +pagarCon(medio:): Boolean
+}
+
+class Cliente{
+    -nombre: string
+    -apellido: string
+    -CBU: string
+    -email: string
+    +getCBU(): string
+    +getEmail(): string
+}
+
+Pedido o-l-> Cliente : cliente
+
+class DebitoGateway{
+    +autorizarMontoConCBU(unMonto: Real, cbu: String): String[*]
+    +pagarMontoConCBU(unMonto: Real, cbu: String)
+}
+
+class DineroMailGateway{
+    +realizarPagoParaEmail (unEmail: String, unMonto: Real): Boolean
+}
+
+interface MedioDePago{
+    +pagar(p: Pedido): boolean
+}
+Pedido --> "1" MedioDePago
+
+note "ADAPTER" as N1
+
+class DebitoGatewayAdaptee{
+    +pagar(p: Pedido): boolean
+}
+
+class DineroMailGatewayAdaptee{
+    +pagar(p: Pedido): boolean
+}
+MedioDePago <|-- DebitoGatewayAdaptee
+DebitoGatewayAdaptee --> "1" DebitoGateway
+MedioDePago <|-- DineroMailGatewayAdaptee
+DineroMailGatewayAdaptee --> "1" DineroMailGateway
+N1 .r. DebitoGatewayAdaptee
+N1 .l. DineroMailGatewayAdaptee
+
+@enduml
