@@ -1,15 +1,13 @@
 package practica7.ejercicio3;
 
-public class Conformado extends EstadoDeProyecto {
+public class Conformado implements EstadoDeProyecto {
 
-	@Override
-	void invertirEnProyecto(Proyecto p, int monto) throws Exception {
-		p.invertir(monto);
-	}
+	public void invertir(Proyecto proyecto, int monto){
+        proyecto.setMontoActual(proyecto.getMontoActual() + monto);
+    }
 
-	@Override
-	void cancelar(Proyecto proyecto) throws Exception {
-		throw new Exception("El proyecto ya está conformado. No puede cancelarlo.");
-	}
+    public void cancelar(Proyecto proyecto) throws Exception{
+        throw new Exception("No se puede cancelar un proyecto conformado");
+    }
 
 }

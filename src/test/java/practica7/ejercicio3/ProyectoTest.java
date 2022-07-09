@@ -13,7 +13,7 @@ public class ProyectoTest {
 	@BeforeEach
 	void setUp() {
 		e = new Emprendedor();
-		p = new Proyecto("Vacaciones Kathmandu 2023", 5000, 0, e, new Vigente());
+		p = new Proyecto("Vacaciones Kathmandu 2023", 5000, e);
 	}
 	
 	@Test
@@ -21,13 +21,14 @@ public class ProyectoTest {
 		e.createProyecto(p);
 		assertEquals(e.getProyectos().size(), 1);
 		assertEquals(e.getProyectos().get(0).getTitulo(), p.getTitulo());
-		assertEquals(p.getMontoAAlcanzar(), 5000);
+		assertEquals(p.getMontoDeseado(), 5000);
 	}
 	
 	@Test
 	void aporteAProyectoTest() {
-		assertEquals(p.getMontoTotalRecibido(), 0);
+		assertEquals(p.getMontoActual(), 0);
 		p.invertir(500);
-		assertEquals(p.getMontoTotalRecibido(), 500);
+		assertEquals(p.getMontoActual(), 500);
+		assertEquals(p.getMontoDeseado() - p.getMontoActual(), 4500);
 	}
 }

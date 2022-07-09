@@ -6,11 +6,11 @@ public class RopaMuySucia implements IStrategyLavado{
     public int lavar(Lavarropas l) {
         l.agregarAgua(100);
         l.agregarJabonEnPolvo();
-        l.lavar(100);
+        //l.lavar(100);
         l.vaciarAgua();
         l.agregarAgua(100);
         l.agregarJabonEnPolvo();
-        l.lavar(30);
+        //l.lavar(30);
         l.vaciarAgua();
         l.agregarAgua(100);
         l.agregarEnjuague();

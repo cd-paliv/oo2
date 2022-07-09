@@ -1,48 +1,64 @@
 package practica7.ejercicio3;
 
 public class Proyecto {
+	private int montoDeseado;
+    private int montoActual;
     private String titulo;
-    private int montoAAlcanzar;
-    private int montoTotalRecibido;
     private Emprendedor responsable;
     private EstadoDeProyecto estado;
     
-    public Proyecto(String titulo, int montoAAlcanzar, int montoTotalRecibido, Emprendedor responsable,
-			EstadoDeProyecto estado) {
-		super();
-		this.titulo = titulo;
-		this.montoAAlcanzar = montoAAlcanzar;
-		this.montoTotalRecibido = montoTotalRecibido;
-		this.responsable = responsable;
-		this.estado = estado;
-	}
+    public Proyecto(String titulo, int montoDeseado, Emprendedor responsable) {
+        this.montoDeseado = montoDeseado;
+        this.titulo = titulo;
+        this.responsable = responsable;
+        this.montoActual = 0;
+        this.estado = new Vigente();
+    }
 
-    public void invertir(int monto) {
-    	montoTotalRecibido += monto;
+    public void invertir(int monto){
+        try{
+            this.estado.invertir(this, monto);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void cancelar(){
+        try{
+            this.estado.cancelar(this);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void cambiarEstado(EstadoDeProyecto s){
+        this.estado = s;
     }
     
-    public void cancelarProyecto(){
-        try {
-			estado.cancelar(this);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+    public int getMontoActual(){
+        return this.montoActual;
     }
-    
-    public void setEstado(EstadoDeProyecto e) {
-    	estado = e;
+
+    public int getMontoDeseado(){
+        return this.montoDeseado;
+    }
+
+    public void setMontoActual(int monto){
+        this.montoActual = monto;
     }
 
 	public String getTitulo() {
 		return titulo;
 	}
 
-	public int getMontoAAlcanzar() {
-		return montoAAlcanzar;
+	public Emprendedor getResponsable() {
+		return responsable;
 	}
 
-	public int getMontoTotalRecibido() {
-		return montoTotalRecibido;
-	}   
+	public EstadoDeProyecto getEstado() {
+		return estado;
+	}
+    
+    
     
 }

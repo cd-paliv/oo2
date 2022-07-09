@@ -1,16 +1,18 @@
 package practica7.ejercicio3;
 
-public class Vigente extends EstadoDeProyecto{
+public class Vigente implements EstadoDeProyecto{
 
-	@Override
-	void invertirEnProyecto(Proyecto p, int monto) {
-		p.invertir(monto);
-	}
+	public void invertir(Proyecto proyecto, int monto){
+        proyecto.setMontoActual(proyecto.getMontoActual() + monto);
+        if(proyecto.getMontoActual() >= proyecto.getMontoDeseado()){
+            proyecto.cambiarEstado(new Conformado());
+        }
+        
+    }
 
-	@Override
-	void cancelar(Proyecto p) {
-		p.setEstado(new Cancelado());
-	}
+    public void cancelar(Proyecto proyecto){
+        proyecto.cambiarEstado(new Cancelado());;
+    }
 
 	
 }

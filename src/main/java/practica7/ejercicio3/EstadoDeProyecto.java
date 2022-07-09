@@ -1,8 +1,8 @@
 package practica7.ejercicio3;
 
-public abstract class EstadoDeProyecto {
+public interface EstadoDeProyecto {
 
-    abstract void invertirEnProyecto(Proyecto p, int monto) throws Exception;
+    abstract void invertir(Proyecto p, int monto) throws Exception;
 	abstract void cancelar(Proyecto proyecto) throws Exception;
 
 }

@@ -23,7 +23,7 @@ class Emprendedor{
 
 Emprendedor <-l- Proyecto : responsable
 
-abstract EstadoDeProyecto{
+interface EstadoDeProyecto{
     +invertirEnProyecto(p: Proyecto, monto: real)
     +cancelarProyecto(p: Proyecto)
 }
@@ -45,7 +45,7 @@ class Conformado{
     +cancelarProyecto(p: Proyecto)
 }
 
-EstadoDeProyecto <|-- Vigente
-EstadoDeProyecto <|-- Conformado
-EstadoDeProyecto <|-- Cancelado
+EstadoDeProyecto <|.. Vigente
+EstadoDeProyecto <|.. Conformado
+EstadoDeProyecto <|.. Cancelado
 @enduml
