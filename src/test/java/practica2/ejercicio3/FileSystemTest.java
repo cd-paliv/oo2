@@ -19,6 +19,7 @@ public class FileSystemTest {
 
     @BeforeEach
     void setUp() throws Exception {
+
         LocalDate date = LocalDate.of(2015, 1, 1);
         grande = new Archivo("grande.tmp", LocalDate.of(2016, 4, 2), 2000000);
         backup2015 = new Archivo("2015.zip", LocalDate.of(2016, 4, 6), 240000000);
@@ -38,23 +39,24 @@ public class FileSystemTest {
         // Directorio vacío
         vacio = new Directorio("home", date);
         
-        //"Directorio con un solo archivo"
+        //Directorio con un solo archivo
         conUnArchivo = new Directorio("var", date);
         Archivo config = new Archivo("config.bak", LocalDate.of(2016, 4, 2), 128);
         conUnArchivo.agregar(config);
         
-        // Directorio con varios archivos, pero sin subdirectorios"
+        //Directorio con varios archivos
         conVariosArchivos = new Directorio("tmp", date);
         conVariosArchivos.agregar(new Archivo("nada.tmp", LocalDate.of(2015, 5, 1), 0));
         conVariosArchivos.agregar(new Archivo("chico.tmp", LocalDate.of(2013, 6, 3), 10));
         conVariosArchivos.agregar(grande);
         conVariosArchivos.agregar(new Archivo("mediano.tmp", LocalDate.of(1995, 11, 23), 10000));
         
-        //Directorio con subdirectorios, archivos, y archivos dentro de los subdirectorios"
+      //Directorio con subdirectorios, archivos, y archivos dentro de los subdirectorios"
         conSubdirectorios = new Directorio("log", date);
         conSubdirectorios.agregar(new Archivo("sys.log", LocalDate.of(2016, 3, 3), 90000));
         conSubdirectorios.agregar(mysql);
         conSubdirectorios.agregar(postgres);
+        conSubdirectorios.agregar(backup2015);
     }
 
     @Test
@@ -77,7 +79,8 @@ public class FileSystemTest {
     void testTamanoTotalOcupado() {
         assertEquals(32, vacio.tamanoTotalOcupado());
         assertEquals(160, conUnArchivo.tamanoTotalOcupado()); //32 del directorio + 128 del archivo
-        assertEquals(2010042, conVariosArchivos.tamanoTotalOcupado()); //  2M de grande + 10K + 0 + 10 + 32 directorio
-        assertEquals(256690128, conSubdirectorios.tamanoTotalOcupado());
+        assertEquals(2010042, conVariosArchivos.tamanoTotalOcupado()); //2M de grande + 10K + 0 + 10 + 32 directorio
+        assertEquals(240090096, conSubdirectorios.tamanoTotalOcupado());
+        
     }
 }

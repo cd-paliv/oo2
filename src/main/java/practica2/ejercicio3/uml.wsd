@@ -8,27 +8,37 @@ skinparam NoteBorderColor Black
 skinparam ArrowColor Black
 skinparam shadowing false
 
+interface FileSystem{
+    +getTamano(): double
+    +getFecha(): LocalDate
+    +getNombre(): String
+    +esArchivo(): boolean
+}
+
 class Archivo{
-    +<<create>> Archivo(nombre: String, fecha: LocalDate, tamano:int)
+    -nombre: String
+    -fecha: LocalDate
+    -tamano: double
+    +getTamano(): double
+    +getFecha(): LocalDate
+    +getNombre(): String
+    +esArchivo(): boolean
 }
 
 class Directorio{
-    +<<create>> Directorio(nombre: String, fecha: LocalDate)
-}
-
-abstract class FileSystem{
     -nombre: String
-    -fechaCreacion: LocalDate
-    -tamano: int
-    +<<create>> FileSystem(nombre: String, fecha: LocalDate, tamano:int)
+    -fecha: LocalDate
+    +getTamano(): double
+    +getFecha(): LocalDate
+    +getNombre(): String
+    +esArchivo(): boolean
     +tamanoTotalOcupado(): int
-    +{abstract} archivoMasGrande(): Archivo
-    +{abstract} archivoMasNuevo(): Archivo
+    +archivoMasGrande(): Archivo
+    +archivoMasNuevo(): Archivo
 }
-skinparam linetype ortho
-FileSystem <|-u- Archivo
-FileSystem <|-- Directorio
 
-Directorio "1" o--> "*" FileSystem
+FileSystem <|.. Archivo
+FileSystem <|.. Directorio
+FileSystem <--o Directorio : hijos
 
 @enduml

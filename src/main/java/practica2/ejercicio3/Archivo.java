@@ -2,22 +2,34 @@ package practica2.ejercicio3;
 
 import java.time.LocalDate;
 
-public class Archivo extends FileSystem{
+public class Archivo implements FileSystem{
+	private String nombre;
+	private LocalDate fecha;
+	private int tamano;
+	
 	/**
 	* Crea un nuevo archivo con nombre <nombre>, de <tamano> tamano 
 	* y en la fecha <fecha>.
 	*/
 	public Archivo (String nombre, LocalDate fecha, int tamano) {
-		super(nombre, fecha, tamano);
+		this.nombre = nombre;
+		this.fecha = fecha;
+		this.tamano = tamano;
 	}
 
-	@Override
-	public Archivo archivoMasGrande() {
-		return this;
+	public int getTamano() {
+		return this.tamano;
 	}
-
-	@Override
-	public Archivo archivoMasNuevo() {
-		return this;
+	
+	public LocalDate getFecha() {
+		return this.fecha;
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public boolean esArchivo() {
+		return true;
 	}
 }
