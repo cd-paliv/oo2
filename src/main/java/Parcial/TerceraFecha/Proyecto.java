@@ -11,7 +11,7 @@ public class Proyecto {
 	private double margen;
 	private String nombre;
 	private String objetivo;
-	private Double montos;
+	private Double monto;
 	private IState estado;
 	
 	public Proyecto(LocalDate fechaInicio, LocalDate fechaFin, int integrantes, String nombre, String objetivo,
@@ -23,17 +23,12 @@ public class Proyecto {
 		this.margen = 8;
 		this.nombre = nombre;
 		this.objetivo = objetivo;
-		this.montos = montos;
+		this.monto = montos;
 		this.estado = new EnConstruccion();
 	}
 	
 	public void AprobarEtapa() {
-		try {
-			this.estado.AprobarEtapa(this);
-		} catch (RuntimeException e) {
-			System.out.println(e.getMessage());
-		}
-		
+		this.estado.AprobarEtapa(this);
 	}
 	
 	public void ModificarMargen(double margen) {
@@ -45,9 +40,7 @@ public class Proyecto {
 	}
 	
 	public double CostoDeProyecto() {
-		//System.out.println(this.montos.stream().mapToDouble(m -> m).sum());
-		//return this.montos.stream().mapToDouble(m -> m).sum();
-		return this.montos;
+		return this.monto * this.integrantes;
 	}
 	
 	public double PrecioDelProyecto() {
@@ -89,10 +82,6 @@ public class Proyecto {
 	public String getNombre() {
 		return nombre;
 	}
-/*
-	public List<Double> getMontos() {
-		return montos;
-	}*/
 
 	public IState getEstado() {
 		return estado;

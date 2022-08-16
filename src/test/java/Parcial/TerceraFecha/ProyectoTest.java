@@ -14,7 +14,11 @@ public class ProyectoTest {
 	@BeforeEach
 	void setUp() {
 		this.prueba = new Proyecto(LocalDate.of(2022, 8, 2), LocalDate.now(), 3, "Vacaciones de invierno", "Salir con amigos", 108.0);
-		prueba.AprobarEtapa();
+		try {
+			this.prueba.AprobarEtapa();
+		} catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	@Test

@@ -1,15 +1,15 @@
 package Parcial.TerceraFecha;
 
-public class EnConstruccion implements IState {
+public class EnConstruccion extends IState {
 
 	@Override
 	public void AprobarEtapa(Proyecto p) {
 		// TODO Auto-generated method stub
-		//p.PrecioDelProyecto() != 0
-		if(Double.compare(p.PrecioDelProyecto(), 0.0) > 0) {
+		if(Double.compare(p.PrecioDelProyecto(), 0.0) > 0) { //p.PrecioDelProyecto() != 0
 			p.cambiarEstado(new EnEvaluacion());
+		} else {
+			throw new RuntimeException("ERROR: El proyecto tiene precio 0");
 		}
-		throw new RuntimeException("El proyecto tiene precio 0");
 	}
 
 	@Override
@@ -20,11 +20,5 @@ public class EnConstruccion implements IState {
 		}
 	}
 
-	@Override
-	public void CancelarProyecto(Proyecto p) {
-		// TODO Auto-generated method stub
-		p.setObjetivo("Cancelado");
-		p.cambiarEstado(new Cancelado());
-	}
 
 }

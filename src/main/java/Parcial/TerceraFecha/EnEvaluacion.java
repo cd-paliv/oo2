@@ -1,6 +1,6 @@
 package Parcial.TerceraFecha;
 
-public class EnEvaluacion implements IState {
+public class EnEvaluacion extends IState {
 
 	@Override
 	public void AprobarEtapa(Proyecto p) {
@@ -16,11 +16,6 @@ public class EnEvaluacion implements IState {
 		}
 	}
 
-	@Override
-	public void CancelarProyecto(Proyecto p) {
-		// TODO Auto-generated method stub
-		p.setObjetivo("Cancelado");
-		p.cambiarEstado(new Cancelado());
-	}
+	
 
 }

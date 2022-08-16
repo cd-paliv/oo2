@@ -1,6 +1,6 @@
 package Parcial.TerceraFecha;
 
-public class Cancelado implements IState {
+public class Cancelado extends IState {
 
 	@Override
 	public void AprobarEtapa(Proyecto p) {
